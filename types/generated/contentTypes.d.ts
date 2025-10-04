@@ -493,6 +493,35 @@ export interface ApiHeroHero extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSlidesBlockSlidesBlock extends Struct.CollectionTypeSchema {
+  collectionName: 'slides_blocks';
+  info: {
+    displayName: 'Slides Block';
+    pluralName: 'slides-blocks';
+    singularName: 'slides-block';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::slides-block.slides-block'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slideItem: Schema.Attribute.Component<'sliders-section.slide', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1005,6 +1034,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::hero.hero': ApiHeroHero;
+      'api::slides-block.slides-block': ApiSlidesBlockSlidesBlock;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

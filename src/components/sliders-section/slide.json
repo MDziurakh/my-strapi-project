@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sliders_section_slides",
+  "info": {
+    "displayName": "slide",
+    "icon": "landscape"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "linkUrl": {
+      "type": "string",
+      "required": true
+    },
+    "linkText": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
