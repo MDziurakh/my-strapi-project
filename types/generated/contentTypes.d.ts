@@ -467,55 +467,29 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiHeroHero extends Struct.CollectionTypeSchema {
-  collectionName: 'heroes';
+export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
+  collectionName: 'globals';
   info: {
-    displayName: 'hero';
-    pluralName: 'heroes';
-    singularName: 'hero';
+    displayName: 'global';
+    pluralName: 'globals';
+    singularName: 'global';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    about: Schema.Attribute.Component<'sections.about', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::hero.hero'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiSlidesBlockSlidesBlock extends Struct.CollectionTypeSchema {
-  collectionName: 'slides_blocks';
-  info: {
-    displayName: 'Slides Block';
-    pluralName: 'slides-blocks';
-    singularName: 'slides-block';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
+    hero: Schema.Attribute.Component<'sections.hero', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::slides-block.slides-block'
+      'api::global.global'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    slideItem: Schema.Attribute.Component<'sliders-section.slide', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1033,8 +1007,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::hero.hero': ApiHeroHero;
-      'api::slides-block.slides-block': ApiSlidesBlockSlidesBlock;
+      'api::global.global': ApiGlobalGlobal;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

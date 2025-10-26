@@ -1,25 +1,37 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SlidersSectionSlide extends Struct.ComponentSchema {
-  collectionName: 'components_sliders_section_slides';
+export interface SectionsAbout extends Struct.ComponentSchema {
+  collectionName: 'components_sections_abouts';
   info: {
-    displayName: 'slide';
-    icon: 'landscape';
+    displayName: 'about';
+    icon: 'layout';
   };
   attributes: {
     description: Schema.Attribute.Text;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    linkText: Schema.Attribute.String;
-    linkUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    description_bold: Schema.Attribute.Text;
     title: Schema.Attribute.String;
-    videoUrl: Schema.Attribute.String;
+  };
+}
+
+export interface SectionsHero extends Struct.ComponentSchema {
+  collectionName: 'components_sections_heroes';
+  info: {
+    displayName: 'hero';
+    icon: 'layout';
+  };
+  attributes: {
+    bg_cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Schema.Attribute.Text;
+    description_special: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'sliders-section.slide': SlidersSectionSlide;
+      'sections.about': SectionsAbout;
+      'sections.hero': SectionsHero;
     }
   }
 }
