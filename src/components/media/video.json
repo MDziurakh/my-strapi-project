@@ -1,0 +1,78 @@
+{
+  "collectionName": "components_media_videos",
+  "info": {
+    "displayName": "video",
+    "icon": "television"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files",
+        "videos"
+      ]
+    },
+    "poster": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "arch-top",
+        "plain",
+        "curve-bl"
+      ]
+    },
+    "aspect": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "a16/9",
+        "a3/2",
+        "a1/1"
+      ]
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "loop": {
+      "type": "boolean",
+      "default": false
+    },
+    "controls": {
+      "type": "boolean",
+      "default": false
+    },
+    "muted": {
+      "type": "boolean",
+      "default": false
+    },
+    "ctaText": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "altText": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
